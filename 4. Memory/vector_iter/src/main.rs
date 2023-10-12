@@ -13,7 +13,17 @@ fn main() {
     println!("capacity = {}", v.capacity());
     println!("{}", s2);
 
-    for elem in v.clone() {
+    // (1)
+    // for elem in v { // for elem in v.into_iter() {
+
+    // (2)
+    // for elem in &v { // for elem in (&v).into_iter() {
+    //             v.iter()
+
+    // (3)
+    for elem in &mut v { // for elem in (&mut v).into_iter() {
+    //          v.iter_mut()
+        (*elem).push('!');
         println!("{}", elem);
     }
 
